@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DAKSHU ID UNB4NNER</title>
+
+<style>
+
+body{
+background:#0b0b0b;
+font-family:Arial;
+color:white;
+margin:0;
+text-align:center;
+}
+
+.header{
+padding:20px;
+font-size:30px;
+color:#ff2e2e;
+font-weight:bold;
+}
+
+.title{
+color:#00ff4c;
+font-size:26px;
+margin-bottom:20px;
+}
+
+.container{
+width:90%;
+max-width:400px;
+margin:auto;
+background:#111;
+padding:20px;
+border-radius:10px;
+}
+
+label{
+display:block;
+margin-top:12px;
+color:#ffb347;
+font-weight:bold;
+text-align:left;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-top:5px;
+border-radius:6px;
+border:none;
+background:#1f1f1f;
+color:white;
+}
+
+button{
+margin-top:20px;
+width:100%;
+padding:14px;
+background:#00c853;
+border:none;
+border-radius:8px;
+font-size:20px;
+font-weight:bold;
+color:white;
+cursor:pointer;
+}
+
+#paymentPage{
+display:none;
+padding:20px;
+}
+
+#successPage{
+display:none;
+padding:20px;
+}
+
+.qrbox{
+background:white;
+padding:15px;
+border-radius:10px;
+display:inline-block;
+margin-top:20px;
+}
+
+#timer{
+font-size:32px;
+color:red;
+margin-top:15px;
+font-weight:bold;
+}
+
+.success{
+font-size:24px;
+color:#00ff4c;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FORM PAGE -->
+
+<div id="formPage">
+
+<div class="header">DAKSHU</div>
+<div class="title">ID UNB4NNER</div>
+
+<div class="container">
+
+<label>Player ID (UID)</label>
+<input type="text">
+
+<label>Account Name</label>
+<input type="text">
+
+<label>Your Device</label>
+<select>
+<option>Android</option>
+<option>iPhone</option>
+</select>
+
+<label>Server / Region</label>
+<select>
+<option>India</option>
+<option>Asia</option>
+<option>Singapore</option>
+</select>
+
+<label>Reason</label>
+<select>
+<option>Temporary Ban</option>
+<option>Suspicious Activity</option>
+</select>
+
+<label>ID Level</label>
+<input type="text">
+
+<label>Upload Screenshot</label>
+<input type="file">
+
+<button onclick="showQR()">PROCEED</button>
+
+</div>
+</div>
+
+
+<!-- PAYMENT PAGE -->
+
+<div id="paymentPage">
+
+<div class="header">DAKSHU</div>
+
+<h2 style="color:#00ff4c;">PAY ₹299</h2>
+
+<div class="qrbox">
+<img src="qr.png" width="250">
+</div>
+
+<div id="timer">05:00</div>
+
+<button onclick="showSuccess()">I HAVE PAID</button>
+
+</div>
+
+
+<!-- SUCCESS PAGE -->
+
+<div id="successPage">
+
+<div class="header">DAKSHU</div>
+
+<div class="success">✅ PAYMENT SUCCESSFUL</div>
+
+<p>Your request has been submitted.</p>
+<p>ID Unban process will start shortly.</p>
+
+</div>
+
+
+
+<script>
+
+function showQR(){
+
+document.getElementById("formPage").style.display="none";
+document.getElementById("paymentPage").style.display="block";
+
+startTimer();
+
+}
+
+function showSuccess(){
+
+document.getElementById("paymentPage").style.display="none";
+document.getElementById("successPage").style.display="block";
+
+}
+
+function startTimer(){
+
+let time = 300;
+
+let interval = setInterval(function(){
+
+let minutes = Math.floor(time/60);
+let seconds = time % 60;
+
+if(seconds < 10){
+seconds = "0"+seconds;
+}
+
+document.getElementById("timer").innerHTML =
+minutes + ":" + seconds;
+
+time--;
+
+if(time < 0){
+
+clearInterval(interval);
+document.getElementById("timer").innerHTML = "TIME EXPIRED";
+
+}
+
+},1000);
+
+}
+
+</script>
+
+</body>
+</html>

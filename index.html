@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo Payment Page</title>
+<style>
+body{
+font-family: Arial;
+background:#0f0f0f;
+color:white;
+text-align:center;
+}
+
+.container{
+width:350px;
+margin:auto;
+margin-top:40px;
+background:#1c1c1c;
+padding:20px;
+border-radius:10px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:none;
+border-radius:5px;
+}
+
+button{
+background:#00c853;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+font-size:18px;
+border-radius:6px;
+cursor:pointer;
+}
+
+#payment{
+display:none;
+margin-top:30px;
+}
+
+#timer{
+font-size:22px;
+color:#ff3d00;
+margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="form">
+
+<h2>Demo Service Form</h2>
+
+<input type="text" placeholder="Enter User ID">
+
+<input type="text" placeholder="Account Name">
+
+<select>
+<option>Your Device</option>
+<option>Android</option>
+<option>iPhone</option>
+</select>
+
+<select>
+<option>Region</option>
+<option>India</option>
+<option>Singapore</option>
+</select>
+
+<select>
+<option>Reason</option>
+<option>Testing</option>
+<option>Other</option>
+</select>
+
+<input type="text" placeholder="Account Level">
+
+<button onclick="showPayment()">PROCEED</button>
+
+</div>
+
+
+<div id="payment">
+
+<h2>Demo Payment ₹299</h2>
+
+<p>Place your QR image in the same folder and name it <b>scanner.png</b></p>
+
+<img src="scanner.png" width="250">
+
+<div id="timer">03:00</div>
+
+</div>
+
+
+<script>
+
+function showPayment(){
+document.getElementById("form").style.display="none";
+document.getElementById("payment").style.display="block";
+startTimer();
+}
+
+function startTimer(){
+let time = 180;
+
+let timer = setInterval(function(){
+
+let minutes = Math.floor(time/60);
+let seconds = time%60;
+
+seconds = seconds<10 ? "0"+seconds : seconds;
+
+document.getElementById("timer").innerHTML =
+minutes + ":" + seconds;
+
+time--;
+
+if(time<0){
+clearInterval(timer);
+document.getElementById("timer").innerHTML="Time Expired";
+}
+
+},1000);
+}
+
+</script>
+
+</body>
+</html>
